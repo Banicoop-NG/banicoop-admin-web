@@ -8,6 +8,7 @@ export const colors = {
   },
   dark: {
     100: "black",
+    200: "rgba(0, 0, 0, 1)"
   },
 };
 
