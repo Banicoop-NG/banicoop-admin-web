@@ -38,10 +38,12 @@ export const SidebarItems: TSideItems[] = [
   {
     name: "Transactions",
     icon: <DefaultCard />,
+    path: "/dashboard/transactions",
   },
 
   {
     name: "Cells",
     icon: <DefaultCells />,
+    path: "/dashboard/cells",
   },
 ];

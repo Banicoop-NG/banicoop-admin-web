@@ -5,6 +5,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import SignIn from "../pages/auth/sign_in";
 import Home from "../pages/dashboard/home/home";
 import CustomersPage from "../pages/dashboard/customers";
+import TransactionsPage from "../pages/dashboard/transactions";
+import CellsPage from "../pages/dashboard/cells";
 
 const RouteContainer = () => {
   const routes = [
@@ -21,7 +23,12 @@ const RouteContainer = () => {
     {
       title: "Transactions",
       path: "/dashboard/transactions",
-      component: <CustomersPage />,
+      component: <TransactionsPage />,
+    },
+    {
+      title: "Cells",
+      path: "/dashboard/cells",
+      component: <CellsPage />,
     },
   ];
 
