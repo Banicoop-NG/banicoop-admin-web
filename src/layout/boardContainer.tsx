@@ -1,9 +1,4 @@
-import {
-  Box,
-  Text,
-  Input,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Text, Input, Flex } from "@chakra-ui/react";
 
 import { FC, ReactNode } from "react";
 import { SearchIcon } from "../assets/icons";
@@ -56,13 +51,13 @@ const BoardContainer: FC<IBoaradContainer> = ({ children, title }) => {
         <Box
           bg="#FAFAFA"
           px="1.5em"
-          py='.3em'
+          py=".3em"
           borderRadius={"20px"}
           display={"flex"}
           alignItems={"center"}
           gap="1em"
         >
-          <SearchIcon/>
+          <SearchIcon />
           <Input
             type="search"
             placeholder="search"

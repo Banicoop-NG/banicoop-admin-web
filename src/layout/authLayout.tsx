@@ -19,9 +19,6 @@ const AuthLayout: FC<TAuth> = ({ children, title }) => {
           md: "none",
           lg: "block",
         }}
-        // bgImage={
-        //   "https://res.cloudinary.com/dhdqt4xwu/image/upload/v1687848091/tranxnow/photo_5823561399941578355_y_ia5quw.jpg"
-        // }
         bgPos={""}
         bgSize={"contain"}
       >
@@ -33,7 +30,7 @@ const AuthLayout: FC<TAuth> = ({ children, title }) => {
         py={"2em"}
         px={["1.5em", "2em"]}
       >
-        <Box
+        {/* <Box
           w={{
             sm: "80%",
             md: "80%",
@@ -46,8 +43,9 @@ const AuthLayout: FC<TAuth> = ({ children, title }) => {
           backgroundPosition={"center"}
           backgroundSize={"contain"}
           bgPos={"center"}
-          bgImage={"https://www.shonazz.com/assets/images/logo-default.png"}
-        ></Box>
+          background={'primary.100'}
+        ></Box> */}
+        <img src="/assets/icons/bannicoop-logo.svg" width="100" />
         {children}
       </Box>
     </Flex>

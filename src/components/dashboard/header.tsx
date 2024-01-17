@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex, Input, Text } from "@chakra-ui/react";
+import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
 
 import DrawerLayout from "../../layout/draweerLayout";
 import { MenuContent } from "../essentials/menuContents";
@@ -6,15 +6,12 @@ import { useDisclosure } from "@chakra-ui/react";
 import {
   FilledBellIcon,
   FilledMessageIcon,
-  SearchIcon,
+ 
 } from "../../assets/icons";
 
 const DashboardHeader = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const logOut = () => {
-    localStorage.clear();
-    window.location.reload();
-  };
+  const { isOpen, onClose } = useDisclosure();
+
   return (
     <Box
       px={"2em"}
