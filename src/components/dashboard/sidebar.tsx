@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
 
-import { Box, Text, Flex, Center, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Flex,
+  Center,
+  useDisclosure,
+  Avatar,
+} from "@chakra-ui/react";
 import { MenuContent } from "../essentials/menuContents";
 import { AiOutlinePoweroff } from "react-icons/ai";
 import ModalLayout from "../../layout/modalLayout";
@@ -33,7 +40,6 @@ const DashboardSidebar = () => {
       h={"100vh"}
       bg={"#fff"}
       w={"300px"}
-      px={"1em"}
       color={"black"}
       py={"1em"}
       position={"sticky"}
@@ -48,27 +54,23 @@ const DashboardSidebar = () => {
         alignItems={"center"}
         justifyContent={"space-between"}
         h={"90vh"}
-        px={"2em"}
+        px={"1em"}
       >
         <Flex flexDir={"column"} gap={"2em"}>
           <MenuContent />
         </Flex>
+      </Flex>
 
-        <Box
-          w={"100%"}
-          borderRadius={"10px"}
-          px={"1em"}
-          py={"0.6em"}
-          display={"flex"}
-          alignItems={"center"}
-          gap={"0.5em"}
-          textAlign={"center"}
-          cursor={"pointer"}
-          color={"red"}
-          bg={"hsl(0deg 42.06% 50.72% / 8%)"}
-          onClick={onOpen}
-        >
-          <AiOutlinePoweroff /> <Text>Log Out</Text>
+      <Flex
+        gap=".5em"
+        borderTop={"1px solid var(--shaded-gray)"}
+        py="2em"
+        px="2em"
+      >
+        <Avatar />
+        <Box>
+          <Text fontWeight={"medium"}>Praise Dominic</Text>
+          <Text fontSize={"13px"}>Admin ID: 0011232</Text>
         </Box>
       </Flex>
 

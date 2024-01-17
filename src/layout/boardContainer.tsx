@@ -1,13 +1,12 @@
 import {
   Box,
   Text,
-  InputLeftElement,
-  InputGroup,
   Input,
   Flex,
 } from "@chakra-ui/react";
-import { IoSearchOutline } from "react-icons/io5";
+
 import { FC, ReactNode } from "react";
+import { SearchIcon } from "../assets/icons";
 
 const INFOICON = (
   <svg
@@ -48,25 +47,32 @@ const BoardContainer: FC<IBoaradContainer> = ({ children, title }) => {
       border={"1px solid var(--shaded-gray)"}
       borderRadius={"10px"}
     >
-      <Flex alignItems={'center'} justifyContent={'space-between'}>
-      <Box display={"flex"} alignItems={"center"} gap=".5em">
-        <Text>{title}</Text>
-        {INFOICON}
-      </Box>
+      <Flex alignItems={"center"} justifyContent={"space-between"}>
+        <Box display={"flex"} alignItems={"center"} gap=".5em">
+          <Text>{title}</Text>
+          {INFOICON}
+        </Box>
 
-      <Box>
-        <InputGroup >
-          <InputLeftElement pointerEvents="none">
-            <IoSearchOutline />
-          </InputLeftElement>
-          <Input type="tel" placeholder="Phone number" />
-        </InputGroup>
-      </Box>
+        <Box
+          bg="#FAFAFA"
+          px="1.5em"
+          py='.3em'
+          borderRadius={"20px"}
+          display={"flex"}
+          alignItems={"center"}
+          gap="1em"
+        >
+          <SearchIcon/>
+          <Input
+            type="search"
+            placeholder="search"
+            border={"none"}
+            outline={"none"}
+          />
+        </Box>
       </Flex>
 
-      <Box my='1em'>
-        {children}
-      </Box>
+      <Box my="1em">{children}</Box>
     </Box>
   );
 };

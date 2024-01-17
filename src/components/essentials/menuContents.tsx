@@ -24,20 +24,24 @@ export const MenuContent = () => {
 
   return (
     <>
-      <DefaultLogo />
+      <Box my="2em">
+        <DefaultLogo />
+      </Box>
+
+      <Text color={"gray.600"}>Menu</Text>
       {SidebarItems.map(({ name, icon, path, menu }, index) => {
         const isMenuOpen = activeMenu === index;
         const isActive = getPath === path;
         return (
-          <Box key={index} position="relative">
+          <Box key={index} position="relative" ml=".5em">
             <Link to={path}>
               <Box
                 gap={"1em"}
                 display={"flex"}
                 alignItems={"center"}
                 my={"1em"}
+                px="1em"
                 sx={getPath === path ? activeState : "none"}
-                px={"2em"}
                 onClick={() => handleMenuClick(index)}
               >
                 {icon}

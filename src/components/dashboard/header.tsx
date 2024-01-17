@@ -27,7 +27,7 @@ const DashboardHeader = () => {
           <Text fontWeight={"semibold"}>Dashboard OVerview</Text>
         </Box>
 
-        <Box
+        {/* <Box
           bg="#FAFAFA"
           px="1.5em"
           borderRadius={"20px"}
@@ -42,7 +42,7 @@ const DashboardHeader = () => {
             border={"none"}
             outline={"none"}
           />
-        </Box>
+        </Box> */}
 
         <Box display={"flex"} alignItems={"center"} gap="1em">
           <Box display={"flex"} alignItems={"center"} gap={"1em"}>

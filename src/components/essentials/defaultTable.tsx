@@ -25,7 +25,7 @@ const DefaultTable: FC<TDefault> = ({ tableHeader, children, tableName }) => {
     <TableContainer>
       <Table variant="striped" colorScheme="gray">
         <TableCaption>{tableName}</TableCaption>
-        <Thead bg={"primary.100"} color={"#fff"} borderRadius={'1em 1em 0 0'}>
+        <Thead bg={"primary.100"} color={"#fff"} borderRadius={"1em 1em 0 0"}>
           <Tr color={"#fff"}>
             {tableHeader?.map((item, index) => {
               return (
