@@ -15,7 +15,13 @@ const DashboardHeader = () => {
       py={"2em"}
       borderBottom={"1px solid var(--shaded-gray)"}
     >
-      <Flex justifyContent={"space-between"}>
+      <Flex justifyContent={"space-between"} px={
+        {
+          sm: "",
+          md: "",
+          lg: "3em"
+        }
+      }>
         <Box>
           <Text fontWeight={"semibold"}>Dashboard OVerview</Text>
         </Box>
