@@ -1,12 +1,18 @@
+import DefaultTable from "../../../components/essentials/defaultTable";
+import BoardContainer from "../../../layout/boardContainer";
 import DashboardLayout from "../../../layout/dashboardLayout";
+
+const customerheader = ["Customer Name" , "Email Address" , "Phone Number" ,  "Date joined" , "Action"]
 
 const CustomersPage = () => {
   return (
     <DashboardLayout>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quidem
-      accusamus quaerat magni hic eveniet sint delectus amet. Est explicabo
-      fugiat laborum officia! Laborum, reprehenderit recusandae quasi ducimus
-      quo sint.
+      <BoardContainer title="Customer List">
+        
+        <DefaultTable tableHeader={customerheader}>
+            
+          </DefaultTable>
+      </BoardContainer>
     </DashboardLayout>
   );
 };

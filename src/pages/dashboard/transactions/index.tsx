@@ -1,12 +1,18 @@
 import DashboardLayout from "../../../layout/dashboardLayout";
+import BoardContainer from "../../../layout/boardContainer";
+import DefaultTable from "../../../components/essentials/defaultTable";
+
+const transactionHeader = ["Customers ", "Amount" , "Receivers Name" , "Date" , "Status"]
 
 const TransactionsPage = () => {
   return (
     <DashboardLayout>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quidem
-      accusamus quaerat magni hic eveniet sint delectus amet. Est explicabo
-      fugiat laborum officia! Laborum, reprehenderit recusandae quasi ducimus
-      quo sint.
+      <BoardContainer title="Transaction Details">
+        
+        <DefaultTable tableHeader={transactionHeader}>
+            
+          </DefaultTable>
+      </BoardContainer>
     </DashboardLayout>
   );
 };

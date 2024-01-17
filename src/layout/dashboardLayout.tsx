@@ -47,7 +47,7 @@ const DashboardLayout = ({
             bg={background ? background : "#fff"}
           >
             <DashboardMetricsContainer />
-            <Box my='2em'>{children}</Box>
+            <Box my="2em">{children}</Box>
           </Box>
         </Box>
       </Box>

@@ -1,5 +1,6 @@
 export const colors = {
   primary: {
+   
     100: "#6922D1",
     299: "#191919",
   },
@@ -8,7 +9,7 @@ export const colors = {
   },
   dark: {
     100: "black",
-    200: "rgba(0, 0, 0, 1)"
+    200: "rgba(0, 0, 0, 1)",
   },
 };
 
