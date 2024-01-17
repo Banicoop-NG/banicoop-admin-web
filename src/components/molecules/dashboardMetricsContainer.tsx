@@ -1,5 +1,4 @@
 import { Box, Text, Flex } from "@chakra-ui/react";
-import { ReactNode } from "react";
 import { AvatarMetric } from "../../assets/icons/dashboaradMetricIcons";
 
 // interface TIcon {

@@ -3,11 +3,7 @@ import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
 import DrawerLayout from "../../layout/draweerLayout";
 import { MenuContent } from "../essentials/menuContents";
 import { useDisclosure } from "@chakra-ui/react";
-import {
-  FilledBellIcon,
-  FilledMessageIcon,
- 
-} from "../../assets/icons";
+import { FilledBellIcon, FilledMessageIcon } from "../../assets/icons";
 
 const DashboardHeader = () => {
   const { isOpen, onClose } = useDisclosure();
