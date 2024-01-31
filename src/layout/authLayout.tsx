@@ -10,11 +10,11 @@ type TAuth = {
 };
 const AuthLayout: FC<TAuth> = ({ children, title }) => {
   return (
-    <Flex flexDir={["column", "column","column" ,"row"]}>
+    <Flex flexDir={["column", "column", "column", "row"]}>
       <Box
-        w={["100%", "100%","100%" , "40%"]}
+        w={["100%", "100%", "100%", "40%"]}
         h={["30vh", "100vh"]}
-        display={["none" , "none" , "none" , "block"]}
+        display={["none", "none", "none", "block"]}
         bgPos={""}
         bgSize={"contain"}
       >
@@ -26,7 +26,6 @@ const AuthLayout: FC<TAuth> = ({ children, title }) => {
         py={"2em"}
         px={["1.5em", "2em"]}
       >
-    
         <img src="/assets/icons/bannicoop-logo.svg" width="100" />
         {children}
       </Box>

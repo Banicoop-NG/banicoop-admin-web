@@ -50,7 +50,6 @@ export const SidebarItems: TSideItems[] = [
   },
 ];
 
-
 export const AccountSidebarItem: TSideItems[] = [
   {
     name: "Help & Support",
@@ -62,5 +61,5 @@ export const AccountSidebarItem: TSideItems[] = [
     name: "Account Settings",
     icon: <DefaultSettingsIcon />,
     path: "/dashboard/customers",
-  }
+  },
 ];

@@ -80,7 +80,6 @@ const DashboardSidebar = () => {
             Do you want to continue ?
           </Text>
           <Text>By clicking continue will log you out</Text>
-
           <Flex w={"100%"} gap={"1em"} mt={"1.5em"} justifyContent={"center"}>
             <ButtonInterface
               w={"100%"}

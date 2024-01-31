@@ -4,7 +4,7 @@ export const colors = {
     299: "#191919",
   },
   brand: {
-    primary: "#6922d1"
+    primary: "#6922d1",
   },
   shades: {
     red: ["#FF0B0B0D"],

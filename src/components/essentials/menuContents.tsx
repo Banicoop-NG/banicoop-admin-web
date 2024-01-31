@@ -55,7 +55,7 @@ export const MenuContent = () => {
         );
       })}
 
-<Text color={"gray.600"}>Menu</Text>
+      <Text color={"gray.600"}>ACCOUNT</Text>
       {AccountSidebarItem?.map(({ name, icon, path, menu }, index) => {
         const isMenuOpen = activeMenu === index;
         const isActive = getPath === path;

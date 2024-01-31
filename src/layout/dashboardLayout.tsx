@@ -36,7 +36,6 @@ const DashboardLayout = ({
       </Box>
       <Box flex="1" overflowY="auto" display="flex" flexDirection="column">
         <DashboardHeader />
-
         <Box pos={"sticky"}>
           <Box
             w={"90%"}

@@ -1,5 +1,7 @@
 import { Box, Text, Flex } from "@chakra-ui/react";
 import { AvatarMetric } from "../../assets/icons/dashboaradMetricIcons";
+import { Fragment } from "react";
+import { DefaultButton } from "../atoms/buttons";
 
 // interface TIcon {
 //   Icon: ReactNode;
@@ -51,6 +53,25 @@ const MetricBox = () => {
   );
 };
 
+const days = [
+  {
+    title: "Today",
+    isActive: true,
+  },
+  {
+    title: "Last 7 Days",
+    isActive: false,
+  },
+  {
+    title: "Last 30 Days",
+    isActive: false,
+  },
+  {
+    title: "All Time",
+    isActive: false,
+  },
+];
+
 const DashboardMetricsContainer = () => {
   return (
     <Box>
@@ -58,8 +79,17 @@ const DashboardMetricsContainer = () => {
         <Box>
           <Text>Welcome Dominic 👋</Text>
         </Box>
-        <Box>
-          <Text>Today</Text>
+        <Box display={"flex"} gap="2em">
+          {days.map((_, key) => {
+            return (
+              <Fragment key={key}>
+                
+                {
+                  _.isActive ? <DefaultButton>{_.title}</DefaultButton> : <Text cursor={'pointer'}>{_.title}</Text>
+                }
+              </Fragment>
+            );
+          })}
         </Box>
       </Flex>
 
