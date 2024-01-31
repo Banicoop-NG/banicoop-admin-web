@@ -13,6 +13,8 @@ import {
   DefaultCard,
   DefaultCells,
   DefaultCustomer,
+  DefaultMessageIcon,
+  DefaultSettingsIcon,
 } from "../assets/icons/sidebarIcons";
 
 type TSideItems = {
@@ -46,4 +48,19 @@ export const SidebarItems: TSideItems[] = [
     icon: <DefaultCells />,
     path: "/dashboard/cells",
   },
+];
+
+
+export const AccountSidebarItem: TSideItems[] = [
+  {
+    name: "Help & Support",
+    icon: <DefaultMessageIcon />,
+    path: "",
+  },
+
+  {
+    name: "Account Settings",
+    icon: <DefaultSettingsIcon />,
+    path: "/dashboard/customers",
+  }
 ];

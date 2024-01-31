@@ -2,6 +2,7 @@ import { Box, Text, Input, Flex } from "@chakra-ui/react";
 
 import { FC, ReactNode } from "react";
 import { SearchIcon } from "../assets/icons";
+import { DefaultButton } from "../components/atoms/buttons";
 
 const INFOICON = (
   <svg
@@ -64,6 +65,10 @@ const BoardContainer: FC<IBoaradContainer> = ({ children, title }) => {
             border={"none"}
             outline={"none"}
           />
+        </Box>
+        
+        <Box>
+          <DefaultButton color='brand.primary'>Export</DefaultButton>
         </Box>
       </Flex>
 

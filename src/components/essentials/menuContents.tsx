@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { DefaultLogo } from "../atoms/dashboard/logo";
+import { AccountSidebarItem } from "../../utils/sidebarItems";
 
 export const MenuContent = () => {
   const getPath = window.location.pathname;
@@ -30,6 +31,32 @@ export const MenuContent = () => {
 
       <Text color={"gray.600"}>Menu</Text>
       {SidebarItems.map(({ name, icon, path, menu }, index) => {
+        const isMenuOpen = activeMenu === index;
+        const isActive = getPath === path;
+        return (
+          <Box key={index} position="relative" ml=".5em">
+            <Link to={path}>
+              <Box
+                gap={"1em"}
+                display={"flex"}
+                alignItems={"center"}
+                my={"1em"}
+                px="1em"
+                sx={getPath === path ? activeState : "none"}
+                onClick={() => handleMenuClick(index)}
+              >
+                {icon}
+                <Text fontSize={"18px"} color={isActive && "primary.100"}>
+                  {name}
+                </Text>
+              </Box>
+            </Link>
+          </Box>
+        );
+      })}
+
+<Text color={"gray.600"}>Menu</Text>
+      {AccountSidebarItem?.map(({ name, icon, path, menu }, index) => {
         const isMenuOpen = activeMenu === index;
         const isActive = getPath === path;
         return (
