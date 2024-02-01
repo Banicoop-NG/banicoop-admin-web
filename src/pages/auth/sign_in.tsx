@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-//@ts-nocheck
 
 import { Box, Text } from "@chakra-ui/react";
 import AuthLayout from "../../layout/authLayout";
@@ -7,9 +5,11 @@ import InputArea from "../../components/essentials/textInput";
 import ButtonInterface from "../../components/essentials/button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { postData } from "../../utils/request";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useMutation } from "@tanstack/react-query";
+import { axiosInstance } from "../../config/axios";
+import { AxiosError } from "axios";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,30 +23,30 @@ const initialValues = {
   password: "",
 };
 
+
+
 const SignIn = () => {
+  
   const [loading, setLoading] = useState(false);
+
+  const loginMutation = useMutation<{email: string , password: string} , AxiosError , {email: string, password: string}>({
+    mutationFn: (values) => {
+      return axiosInstance.post('/login' , values)
+    },
+    onSuccess: () => {
+      
+    },
+    onError: (err: AxiosError) => {
+
+    }
+  
+  })
+
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: async values => {
-      try {
-        setLoading(true);
-        const { decrypted } = await postData({
-          url: "admin/user/login",
-          body: values,
-          message: false,
-        });
-
-        setLoading(false);
-        const authToken = decrypted?._token;
-        localStorage.setItem("_authToken", authToken);
-        toast.success("Logged in successfully");
-        window.location.reload();
-      } catch (error) {
-        setLoading(false);
-      } finally {
-        setLoading(false);
-      }
+      loginMutation.mutate(values)
     },
   });
 

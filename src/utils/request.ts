@@ -26,7 +26,7 @@ export const postData = async ({ url, body, header, message }: Config) => {
         "Content-Type": "application/json",
       },
       proxy: {
-        host: "104.236.174.88",
+        host: "",
         port: 3128,
       },
     });

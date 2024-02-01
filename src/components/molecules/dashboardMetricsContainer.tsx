@@ -1,13 +1,16 @@
 import { Box, Text, Flex } from "@chakra-ui/react";
 import { AvatarMetric } from "../../assets/icons/dashboaradMetricIcons";
-import { Fragment } from "react";
+import { FC, Fragment } from "react";
 import { DefaultButton } from "../atoms/buttons";
+import { ReactNode } from "react";
 
-// interface TIcon {
-//   Icon: ReactNode;
-// }
+interface IMetricIcon {
+  icon?: ReactNode;
+  title: string;
+  amount: number;
+}
 
-const MetricBox = () => {
+const MetricBox: FC<IMetricIcon> = ({ icon, title, amount }: IMetricIcon) => {
   return (
     <Box
       display={"flex"}
@@ -35,8 +38,8 @@ const MetricBox = () => {
         <AvatarMetric />
       </Box>
       <Box>
-        <Text fontSize="14px" color="dark.200">
-          Total Transactions
+        <Text fontSize="14px" color="gray.500">
+          {title}
         </Text>
         <Text
           fontSize={{
@@ -46,7 +49,8 @@ const MetricBox = () => {
           }}
           fontWeight={"bold"}
         >
-          $60,000
+          {" "}
+          ₦ {amount}
         </Text>
       </Box>
     </Box>
@@ -73,6 +77,23 @@ const days = [
 ];
 
 const DashboardMetricsContainer = () => {
+  const metricData = [
+    {
+      title: "Total Transactions",
+      icon: "",
+      amount: 6000,
+    },
+    {
+      title: "Total Customers",
+      icon: "",
+      amount: 3000,
+    },
+    {
+      title: "Total Customers",
+      icon: "",
+      amount: 8000,
+    },
+  ];
   return (
     <Box>
       <Flex alignItems={"center"} justifyContent={"space-between"}>
@@ -83,10 +104,11 @@ const DashboardMetricsContainer = () => {
           {days.map((_, key) => {
             return (
               <Fragment key={key}>
-                
-                {
-                  _.isActive ? <DefaultButton>{_.title}</DefaultButton> : <Text cursor={'pointer'}>{_.title}</Text>
-                }
+                {_.isActive ? (
+                  <DefaultButton>{_.title}</DefaultButton>
+                ) : (
+                  <Text cursor={"pointer"}>{_.title}</Text>
+                )}
               </Fragment>
             );
           })}
@@ -103,9 +125,11 @@ const DashboardMetricsContainer = () => {
           lg: "row",
         }}
       >
-        <MetricBox />
-        <MetricBox />
-        <MetricBox />
+        {metricData.map((_, key) => (
+          <Fragment key={key}>
+            <MetricBox title={_.title} amount={_.amount} />
+          </Fragment>
+        ))}
       </Flex>
     </Box>
   );
