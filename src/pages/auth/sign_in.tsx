@@ -1,11 +1,10 @@
-
+//@ts-nocheck
 import { Box, Text } from "@chakra-ui/react";
 import AuthLayout from "../../layout/authLayout";
 import InputArea from "../../components/essentials/textInput";
 import ButtonInterface from "../../components/essentials/button";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import { useState } from "react";
+import * as Yup from "yup";   
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { axiosInstance } from "../../config/axios";
@@ -15,29 +14,34 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .required("Email is required")
     .email("Invalid email format"),
-  password: Yup.string().required("Password is required"),
+  pwd: Yup.string().required("pwd is required"),
 });
 
 const initialValues = {
   email: "",
-  password: "",
+  pwd: "",
 };
 
 
 
 const SignIn = () => {
   
-  const [loading, setLoading] = useState(false);
-
-  const loginMutation = useMutation<{email: string , password: string} , AxiosError , {email: string, password: string}>({
+  const loginMutation = useMutation<{email: string , pwd: string} , AxiosError , {email: string, pwd: string}>({
     mutationFn: (values) => {
-      return axiosInstance.post('/login' , values)
-    },
-    onSuccess: () => {
-      
+      return axiosInstance.post('/auth/login' , values)
+    }, 
+    onSuccess: (response) => {
+        console.log(response)
     },
     onError: (err: AxiosError) => {
-
+      const errMsg = err?.response?.data?.message; 
+      if ( Array.isArray(errMsg)) {
+        errMsg.map ( item =>  {
+          return toast.error(item);
+        })
+      } else {
+        return toast.error(errMsg);
+      }
     }
   
   })
@@ -71,17 +75,17 @@ const SignIn = () => {
 
           <InputArea
             type="password"
-            placeholder="Password"
+            placeholder="******"
             label="Password"
-            name="password"
-            value={formik.values.password}
+            name="pwd"
+            value={formik.values.pwd}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            isInvalid={formik.touched.password && formik.errors.password}
-            isError={formik.touched.password && formik.errors.password}
+            isInvalid={formik.touched.pwd && formik.errors.pwd}
+            isError={formik.touched.pwd && formik.errors.pwd}
           />
 
-          <ButtonInterface width="100%" type="submit" loading={loading}>
+          <ButtonInterface width="100%" type="submit" loading={loginMutation.isPending}>
             Sign In
           </ButtonInterface>
         </form>
