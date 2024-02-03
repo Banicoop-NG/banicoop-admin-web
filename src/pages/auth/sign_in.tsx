@@ -4,7 +4,7 @@ import AuthLayout from "../../layout/authLayout";
 import InputArea from "../../components/essentials/textInput";
 import ButtonInterface from "../../components/essentials/button";
 import { useFormik } from "formik";
-import * as Yup from "yup";   
+import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { axiosInstance } from "../../config/axios";
@@ -22,35 +22,35 @@ const initialValues = {
   pwd: "",
 };
 
-
-
 const SignIn = () => {
-  
-  const loginMutation = useMutation<{email: string , pwd: string} , AxiosError , {email: string, pwd: string}>({
-    mutationFn: (values) => {
-      return axiosInstance.post('/auth/login' , values)
-    }, 
-    onSuccess: (response) => {
-        console.log(response)
+  const loginMutation = useMutation<
+    { email: string; pwd: string },
+    AxiosError,
+    { email: string; pwd: string }
+  >({
+    mutationFn: values => {
+      return axiosInstance.post("/auth/login", values);
+    },
+    onSuccess: response => {
+      console.log(response);
     },
     onError: (err: AxiosError) => {
-      const errMsg = err?.response?.data?.message; 
-      if ( Array.isArray(errMsg)) {
-        errMsg.map ( item =>  {
+      const errMsg = err?.response?.data?.message;
+      if (Array.isArray(errMsg)) {
+        errMsg.map(item => {
           return toast.error(item);
-        })
+        });
       } else {
         return toast.error(errMsg);
       }
-    }
-  
-  })
+    },
+  });
 
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: async values => {
-      loginMutation.mutate(values)
+      loginMutation.mutate(values);
     },
   });
 
@@ -85,7 +85,11 @@ const SignIn = () => {
             isError={formik.touched.pwd && formik.errors.pwd}
           />
 
-          <ButtonInterface width="100%" type="submit" loading={loginMutation.isPending}>
+          <ButtonInterface
+            width="100%"
+            type="submit"
+            loading={loginMutation.isPending}
+          >
             Sign In
           </ButtonInterface>
         </form>

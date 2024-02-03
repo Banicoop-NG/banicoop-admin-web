@@ -30,14 +30,13 @@ const INFOICON = (
   </svg>
 );
 
-
-
 interface IBoaradContainer {
   children?: ReactNode;
   title?: string;
+  section?: ReactNode;
 }
 
-const BoardContainer: FC<IBoaradContainer> = ({ children, title }) => {
+const BoardContainer: FC<IBoaradContainer> = ({ children, section, title }) => {
   return (
     <Box
       py="2em"
@@ -51,7 +50,7 @@ const BoardContainer: FC<IBoaradContainer> = ({ children, title }) => {
           {INFOICON}
         </Box>
 
-        <Flex gap="1em">
+        <Flex gap="1em" alignItems="center">
           <Box
             bg="#FAFAFA"
             px="1.5em"
@@ -70,14 +69,7 @@ const BoardContainer: FC<IBoaradContainer> = ({ children, title }) => {
             />
           </Box>
 
-          <Box>
-          <DefaultButton >
-              <Flex alignItems={"center"} gap=".5em">
-                <ExportIcon/> <Text>Export</Text>
-              </Flex>
-            </DefaultButton>  
-          
-          </Box>
+          <Box>{section}</Box>
         </Flex>
       </Flex>
 

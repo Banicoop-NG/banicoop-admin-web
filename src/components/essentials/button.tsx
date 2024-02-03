@@ -8,6 +8,7 @@ interface IButton extends ButtonProps {
   bg?: string;
   loading?: boolean;
   type?: any;
+  withBorder?: boolean;
   onClick?: () => void;
 }
 const ButtonInterface: FC<IButton> = ({
@@ -18,6 +19,7 @@ const ButtonInterface: FC<IButton> = ({
   onClick,
   type,
   children,
+  withBorder,
   ...props
 }) => {
   return (
@@ -30,6 +32,11 @@ const ButtonInterface: FC<IButton> = ({
       onClick={onClick}
       type={type}
       _hover={{}}
+      borderRadius={"full"}
+      py="1.8em"
+      px="2.5em"
+      fontSize={"15px"}
+      border={withBorder ? "1px solid var(--primary-color) " : "none"}
       {...props}
     >
       {children}
