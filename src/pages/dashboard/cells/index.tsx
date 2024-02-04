@@ -1,13 +1,14 @@
 import DashboardLayout from "../../../layout/dashboardLayout";
 import BoardContainer from "../../../layout/boardContainer";
 import DefaultTable from "../../../components/essentials/defaultTable";
-import { Flex, useDisclosure } from "@chakra-ui/react";
+import { Flex, useDisclosure , Box} from "@chakra-ui/react";
 import {
   BoardActionButton,
   ExportButton,
 } from "../../../components/atoms/buttons";
 import ModalLayout from "../../../layout/modalLayout";
 import ButtonInterface from "../../../components/essentials/button";
+import InputArea from "../../../components/essentials/textInput";
 
 const CellsTableheader = [
   "Customers ",
@@ -38,6 +39,12 @@ const CellsPage = () => {
           description="Enter cell information to continue."
         >
           <form>
+            <Box>
+              <InputArea type="text" name="Cell name" placeholder="Cell name"/>
+              <InputArea type="text" name="Cell name" placeholder="No of Participants "/>
+              <InputArea type="text" name="Cell name" placeholder="Contribution Amount"/>
+              <InputArea type="text" name="Cell name" placeholder="Duration"/>
+            </Box>
             <Flex
               gap="1em"
               alignItems={"center"}
@@ -49,7 +56,7 @@ const CellsPage = () => {
                 color="brand.primary"
                 onClick={onClose}
               >
-                {" "}
+                
                 Cancel
               </ButtonInterface>
             </Flex>

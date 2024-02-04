@@ -44,9 +44,13 @@ const InputArea: FC<TInput> = ({
         value={value}
         bg={"gray.50"}
         placeholder={placeholder}
+        color='gray'
+        fontWeight={'normal'}
         h={"48px"}
-        borderRadius={0}
+        borderRadius={'10px'}
         onChange={handleChange}
+        border={'2px solid var(--shaded-gray)'}
+
       />
 
       <FormErrorMessage>
