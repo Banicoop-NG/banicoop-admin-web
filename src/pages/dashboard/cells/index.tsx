@@ -7,7 +7,6 @@ import {
   ExportButton,
 } from "../../../components/atoms/buttons";
 import ModalLayout from "../../../layout/modalLayout";
-import { ModalTypography } from "../../../components/atoms/typography";
 import ButtonInterface from "../../../components/essentials/button";
 
 const CellsTableheader = [

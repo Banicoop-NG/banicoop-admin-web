@@ -13,6 +13,7 @@ import {
   DefaultCard,
   DefaultCells,
   DefaultCustomer,
+  DefaultLogoutIcon,
   DefaultMessageIcon,
   DefaultSettingsIcon,
 } from "../assets/icons/sidebarIcons";
@@ -61,5 +62,10 @@ export const AccountSidebarItem: TSideItems[] = [
     name: "Account Settings",
     icon: <DefaultSettingsIcon />,
     path: "/dashboard/customers",
+  },
+  {
+    name: "Logout",
+    icon: <DefaultLogoutIcon />,
+    path: "",
   },
 ];

@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { axiosInstance } from "../../config/axios";
 import { AxiosError } from "axios";
+import Cookies from "js-cookie";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -32,7 +33,10 @@ const SignIn = () => {
       return axiosInstance.post("/auth/login", values);
     },
     onSuccess: response => {
-      console.log(response);
+      const data = response?.data?.payload;
+      const { accessToken } = data;
+      Cookies.set("_accessToken", accessToken, { expires: 1 });
+      window.location.href = "/";
     },
     onError: (err: AxiosError) => {
       const errMsg = err?.response?.data?.message;

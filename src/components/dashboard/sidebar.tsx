@@ -17,31 +17,13 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 
 const DashboardSidebar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [loader, setLoader] = useState(false);
-
-  const logOut = () => {
-    setLoader(true);
-    toast.success("Loged out successfully");
-
-    setTimeout(() => {
-      window.location.reload();
-      window.location.href = "/";
-      localStorage.removeItem("_authToken");
-    }, 2000);
-  };
-
-  const closeModal = () => {
-    onClose();
-    setLoader(false);
-  };
   return (
     <Box
       h={"100vh"}
       bg={"#fff"}
       w={"300px"}
       color={"black"}
-      py={"1em"}
+      py={".5em"}
       position={"sticky"}
       top={0}
       bottom={0}
@@ -56,7 +38,7 @@ const DashboardSidebar = () => {
         h={"90vh"}
         px={"1em"}
       >
-        <Flex flexDir={"column"} gap={"2em"}>
+        <Flex flexDir={"column"} gap={"1em"}>
           <MenuContent />
         </Flex>
       </Flex>
@@ -73,29 +55,6 @@ const DashboardSidebar = () => {
           <Text fontSize={"13px"}>Admin ID: 0011232</Text>
         </Box>
       </Flex>
-
-      <ModalLayout isOpen={isOpen} onClose={onClose} textAlign={"center"}>
-        <Box textAlign={"center"}>
-          <Text fontWeight={"bold"} fontSize={"1.3em"}>
-            Do you want to continue ?
-          </Text>
-          <Text>By clicking continue will log you out</Text>
-          <Flex w={"100%"} gap={"1em"} mt={"1.5em"} justifyContent={"center"}>
-            <ButtonInterface
-              w={"100%"}
-              _hover={{}}
-              bg={"gray.100"}
-              color="black"
-              onClick={closeModal}
-            >
-              Cancel
-            </ButtonInterface>
-            <ButtonInterface w={"100%"} onClick={logOut} loading={loader}>
-              Continue
-            </ButtonInterface>
-          </Flex>
-        </Box>
-      </ModalLayout>
     </Box>
   );
 };

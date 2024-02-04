@@ -7,6 +7,7 @@ import Home from "../pages/dashboard/home/home";
 import CustomersPage from "../pages/dashboard/customers";
 import TransactionsPage from "../pages/dashboard/transactions";
 import CellsPage from "../pages/dashboard/cells";
+import Cookies from "js-cookie";
 
 const RouteContainer = () => {
   const routes = [
@@ -35,7 +36,7 @@ const RouteContainer = () => {
   return (
     <Router>
       <Routes>
-        {localStorage.getItem("_authToken") ? (
+        {Cookies.get("_accessToken") ? (
           <>
             {routes.map((items, key) => (
               <Route key={key} path={items.path} element={items.component} />

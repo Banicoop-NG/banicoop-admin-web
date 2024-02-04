@@ -81,17 +81,17 @@ const DashboardMetricsContainer = () => {
     {
       title: "Total Transactions",
       icon: "",
-      amount: 6000,
+      amount: 0,
     },
     {
       title: "Total Customers",
       icon: "",
-      amount: 3000,
+      amount: 0,
     },
     {
       title: "Total Customers",
       icon: "",
-      amount: 8000,
+      amount: 0,
     },
   ];
   return (
