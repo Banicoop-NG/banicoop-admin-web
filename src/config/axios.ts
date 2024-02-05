@@ -1,8 +1,8 @@
 import axios from "axios";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 
 const defaultUrl = import.meta.env.VITE_APP_API_URL;
-let refreshToken = Cookies.get("_refreshToken");
+//let refreshToken = Cookies.get("_refreshToken");
 
 export const axiosInstance = axios.create({
   baseURL: defaultUrl,
@@ -22,7 +22,6 @@ export const axiosInstance = axios.create({
 //   }
 // );
 
-
 // async function refreshAccessToken() {
 //   try {
 //     const response = await axiosInstance.post("/auth/refreshAccessToken", {
@@ -32,8 +31,8 @@ export const axiosInstance = axios.create({
 //     axiosInstance.defaults.headers.common["Authorization"] =
 //       "Bearer " + newAccessToken;
 //   } catch (error) {
-    
+
 //     console.error("Failed to refresh access token: ", error);
-//     throw error; 
+//     throw error;
 //   }
 // }

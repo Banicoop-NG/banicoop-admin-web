@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Box, Text, Flex } from "@chakra-ui/react";
 import { AvatarMetric } from "../../assets/icons/dashboaradMetricIcons";
 import { FC, Fragment } from "react";

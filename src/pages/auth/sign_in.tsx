@@ -35,9 +35,9 @@ const SignIn = () => {
     onSuccess: response => {
       const data = response?.data?.payload;
 
-      const { accessToken , refreshToken } = data;
+      const { accessToken, refreshToken } = data;
       Cookies.set("_accessToken", accessToken, { expires: 1 });
-      Cookies.set("_refreshToken" , refreshToken , {expires: 1}); 
+      Cookies.set("_refreshToken", refreshToken, { expires: 1 });
       window.location.href = "/";
     },
     onError: (err: AxiosError) => {
