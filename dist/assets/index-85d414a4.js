@@ -30403,16 +30403,14 @@ attempted value: ${a}
         });
     }
     required(t) {
-      return super
-        .required(t)
-        .withMutation(r =>
-          r.test({
-            message: t || sn.required,
-            name: "required",
-            skipAbsent: !0,
-            test: n => !!n.length,
-          })
-        );
+      return super.required(t).withMutation(r =>
+        r.test({
+          message: t || sn.required,
+          name: "required",
+          skipAbsent: !0,
+          test: n => !!n.length,
+        })
+      );
     }
     notRequired() {
       return super

@@ -9,6 +9,11 @@ import {
 import ModalLayout from "../../../layout/modalLayout";
 import ButtonInterface from "../../../components/essentials/button";
 import InputArea from "../../../components/essentials/textInput";
+import { useFormik } from "formik";
+import { createContributionSchema } from "../../../validations";
+import { useMutation } from "@tanstack/react-query";
+import { axiosInstance } from "../../../config/axios";
+import { postRequest } from "../../../utils/newRequest";
 
 const CellsTableheader = [
   "Customers ",
@@ -26,6 +31,36 @@ const CellsPage = () => {
       <ExportButton onClick={() => alert(0)} />
     </Flex>
   );
+
+  const payload = {
+    contributionName: "",
+    monthlyAmount: "",
+    startDate: "",
+    totalServer: "",
+    participants: "",
+  };
+
+
+  const formik = useFormik({
+    initialValues: payload,
+    validateOnChange: true,
+    validationSchema: createContributionSchema,
+    onSubmit: async values => {
+
+      const parsedValues = {
+        ...values,
+        monthlyAmount: parseInt(values.monthlyAmount, 10),
+        participants: parseInt(values.participants, 10),
+        totalServer: parseInt(values.totalServer, 10),
+      };
+
+      postRequest({
+        url: "/contribution",
+        body: parsedValues,
+        successMsg: "Contribution created successfully"
+      });
+    },
+  });
   return (
     <>
       <DashboardLayout>
@@ -38,32 +73,61 @@ const CellsPage = () => {
           title="Create New Cell"
           description="Enter cell information to continue."
         >
-          <form>
+          <form onSubmit={formik.handleSubmit}>
             <Box>
               <InputArea
                 type="text"
                 name="contributionName"
                 placeholder="Cell name"
+                onChange={formik.handleChange}
+                isInvalid={
+                  formik.errors.contributionName &&
+                  formik.errors.contributionName
+                }
+                isError={
+                  formik.errors.contributionName &&
+                  formik.errors.contributionName
+                }
               />
               <InputArea
-                type="text"
+                type="number"
                 name="monthlyAmount"
                 placeholder="Monthly Amount "
+                onChange={formik.handleChange}
+                isInvalid={
+                  formik.errors.monthlyAmount && formik.errors.monthlyAmount
+                }
+                isError={
+                  formik.errors.monthlyAmount && formik.errors.monthlyAmount
+                }
               />
               <InputArea
-                type="text"
+                type="date"
                 name="startDate"
                 placeholder="Contribution Amount"
+                onChange={formik.handleChange}
+                isInvalid={formik.errors.startDate && formik.errors.startDate}
+                isError={formik.errors.startDate && formik.errors.startDate}
               />
               <InputArea
-                type="text"
+                type="number"
                 name="participants"
                 placeholder="No. of Participants"
+                onChange={formik.handleChange}
+                isInvalid={
+                  formik.errors.participants && formik.errors.participants
+                }
+                isError={
+                  formik.errors.participants && formik.errors.participants
+                }
               />
               <InputArea
-                type="text"
+                type="number"
                 name="totalServer"
                 placeholder="Total Savers"
+                onChange={formik.handleChange}
+                isInvalid={formik.errors.totalServer && formik.errors.totalServer}
+                isError={formik.errors.totalServer && formik.errors.totalServer}
               />
             </Box>
             <Flex
@@ -71,7 +135,10 @@ const CellsPage = () => {
               alignItems={"center"}
               justifyContent={"space-between"}
             >
-              <ButtonInterface w={["", "250px"]}> Create Cell</ButtonInterface>
+              <ButtonInterface w={["", "250px"]} type="submit">
+                {" "}
+                Create Cell
+              </ButtonInterface>
               <ButtonInterface
                 bg="var(--primary-gray)"
                 color="brand.primary"
