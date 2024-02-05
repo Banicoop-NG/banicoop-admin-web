@@ -40,10 +40,11 @@ const CellsPage = () => {
         >
           <form>
             <Box>
-              <InputArea type="text" name="Cell name" placeholder="Cell name"/>
-              <InputArea type="text" name="Cell name" placeholder="No of Participants "/>
-              <InputArea type="text" name="Cell name" placeholder="Contribution Amount"/>
-              <InputArea type="text" name="Cell name" placeholder="Duration"/>
+              <InputArea type="text" name="contributionName" placeholder="Cell name"/>
+              <InputArea type="text" name="monthlyAmount" placeholder="Monthly Amount "/>
+              <InputArea type="text" name="startDate" placeholder="Contribution Amount"/>
+              <InputArea type="text" name="participants" placeholder="No. of Participants"/>
+              <InputArea type="text" name="totalServer" placeholder="Total Savers"/>
             </Box>
             <Flex
               gap="1em"
