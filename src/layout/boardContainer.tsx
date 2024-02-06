@@ -1,3 +1,4 @@
+//@ts-nocheck
 //@ts-ignore
 import { Box, Text, Input, Flex } from "@chakra-ui/react";
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import Cookies from "js-cookie";
+//import Cookies from "js-cookie";
 
 const defaultUrl = import.meta.env.VITE_APP_API_URL;
 //let refreshToken = Cookies.get("_refreshToken");

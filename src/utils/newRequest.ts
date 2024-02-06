@@ -6,15 +6,15 @@ interface IRequest {
   url: string;
   body: {};
   isMessage?: boolean;
-  successMsg?: string 
+  successMsg?: string;
 }
 
 const postRequest = async ({ url, body, successMsg }: IRequest) => {
   try {
     const request = await axiosInstance.post(url, body);
     const response = request;
-    if (request.status === 201 || request.status === 2000 ) {
-        toast.success(successMsg);   
+    if (request.status === 201 || request.status === 2000) {
+      toast.success(successMsg);
     }
 
     return { response };

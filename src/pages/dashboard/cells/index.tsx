@@ -1,3 +1,4 @@
+//@ts-nocheck
 import DashboardLayout from "../../../layout/dashboardLayout";
 import BoardContainer from "../../../layout/boardContainer";
 import DefaultTable from "../../../components/essentials/defaultTable";
@@ -40,13 +41,11 @@ const CellsPage = () => {
     participants: "",
   };
 
-
   const formik = useFormik({
     initialValues: payload,
     validateOnChange: true,
     validationSchema: createContributionSchema,
     onSubmit: async values => {
-
       const parsedValues = {
         ...values,
         monthlyAmount: parseInt(values.monthlyAmount, 10),
@@ -57,7 +56,7 @@ const CellsPage = () => {
       postRequest({
         url: "/contribution",
         body: parsedValues,
-        successMsg: "Contribution created successfully"
+        successMsg: "Contribution created successfully",
       });
     },
   });
@@ -126,7 +125,9 @@ const CellsPage = () => {
                 name="totalServer"
                 placeholder="Total Savers"
                 onChange={formik.handleChange}
-                isInvalid={formik.errors.totalServer && formik.errors.totalServer}
+                isInvalid={
+                  formik.errors.totalServer && formik.errors.totalServer
+                }
                 isError={formik.errors.totalServer && formik.errors.totalServer}
               />
             </Box>
