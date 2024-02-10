@@ -8,6 +8,7 @@ import CustomersPage from "../pages/dashboard/customers";
 import TransactionsPage from "../pages/dashboard/transactions";
 import CellsPage from "../pages/dashboard/cells";
 import Cookies from "js-cookie";
+import { useGetUsers } from "../helpers/request";
 
 const RouteContainer = () => {
   const routes = [
@@ -33,6 +34,8 @@ const RouteContainer = () => {
     },
   ];
 
+  const getUsersQuery = useGetUsers();
+  //console.log(getUsersQuery)
   return (
     <Router>
       <Routes>
