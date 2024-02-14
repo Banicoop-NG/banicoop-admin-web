@@ -9,6 +9,9 @@ import TransactionsPage from "../pages/dashboard/transactions";
 import CellsPage from "../pages/dashboard/cells";
 import Cookies from "js-cookie";
 import { useGetUsers } from "../helpers/request";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { handleFetchAllUsers } from "../redux/slice/requests";
 
 const RouteContainer = () => {
   const routes = [
@@ -34,8 +37,14 @@ const RouteContainer = () => {
     },
   ];
 
+  const dispatch = useDispatch();
+
   const getUsersQuery = useGetUsers();
-  //console.log(getUsersQuery)
+  const { data } = getUsersQuery;
+  const responseData = data?.payload?.data;
+  useEffect(() => {
+    dispatch(handleFetchAllUsers(responseData));
+  }, [responseData]);
   return (
     <Router>
       <Routes>

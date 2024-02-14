@@ -4,14 +4,20 @@ import { AvatarMetric } from "../../assets/icons/dashboaradMetricIcons";
 import { FC, Fragment } from "react";
 import { DefaultButton } from "../atoms/buttons";
 import { ReactNode } from "react";
+import { useSelector } from "react-redux";
+import { formatNumber } from "../../utils/formatNumber";
 
 interface IMetricIcon {
   icon?: ReactNode;
   title: string;
   amount: number;
+  currency?: boolean
 }
 
-const MetricBox: FC<IMetricIcon> = ({ icon, title, amount }: IMetricIcon) => {
+const MetricBox: FC<IMetricIcon> = ({ currency ,  icon, title, amount }: IMetricIcon) => {
+
+
+
   return (
     <Box
       display={"flex"}
@@ -50,8 +56,8 @@ const MetricBox: FC<IMetricIcon> = ({ icon, title, amount }: IMetricIcon) => {
           }}
           fontWeight={"bold"}
         >
-          {" "}
-          ₦ {amount}
+          
+          {currency ? "₦" : ''} {formatNumber(amount)}
         </Text>
       </Box>
     </Box>
@@ -78,21 +84,29 @@ const days = [
 ];
 
 const DashboardMetricsContainer = () => {
+  const {requestActions} = useSelector((state) => state)
+  const { allUsers  } = requestActions;
+  const usersLength = allUsers?.length; 
+ 
+
   const metricData = [
+    {
+      title: "Total Customers",
+      icon: "",
+      amount: usersLength,
+      currenncy: false 
+    },
     {
       title: "Total Transactions",
       icon: "",
       amount: 0,
+      currenncy: false 
     },
     {
-      title: "Total Customers",
+      title: "Total Loans",
       icon: "",
       amount: 0,
-    },
-    {
-      title: "Total Customers",
-      icon: "",
-      amount: 0,
+      currenncy: false 
     },
   ];
   return (
@@ -128,7 +142,7 @@ const DashboardMetricsContainer = () => {
       >
         {metricData.map((_, key) => (
           <Fragment key={key}>
-            <MetricBox title={_.title} amount={_.amount} />
+            <MetricBox title={_.title} amount={_.amount} currency={_.currenncy} />
           </Fragment>
         ))}
       </Flex>
