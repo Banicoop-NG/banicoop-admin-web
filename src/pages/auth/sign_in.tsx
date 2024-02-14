@@ -10,6 +10,8 @@ import { useMutation } from "@tanstack/react-query";
 import { axiosInstance } from "../../config/axios";
 import { AxiosError } from "axios";
 import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -24,6 +26,8 @@ const initialValues = {
 };
 
 const SignIn = () => {
+
+  const dispatch = useDispatch()
   const loginMutation = useMutation<
     { email: string; pwd: string },
     AxiosError,
@@ -34,11 +38,12 @@ const SignIn = () => {
     },
     onSuccess: response => {
       const data = response?.data?.payload;
+      console.log(data)
 
       const { accessToken, refreshToken } = data;
       Cookies.set("_accessToken", accessToken, { expires: 1 });
       Cookies.set("_refreshToken", refreshToken, { expires: 1 });
-      window.location.href = "/";
+      //window.location.href = "/";
     },
     onError: (err: AxiosError) => {
       const errMsg = err?.response?.data?.message;

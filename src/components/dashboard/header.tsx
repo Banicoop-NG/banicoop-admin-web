@@ -4,10 +4,13 @@ import DrawerLayout from "../../layout/draweerLayout";
 import { MenuContent } from "../essentials/menuContents";
 import { useDisclosure } from "@chakra-ui/react";
 import { FilledBellIcon, FilledMessageIcon } from "../../assets/icons";
+import { useSelector } from "react-redux";
+
 
 const DashboardHeader = () => {
   const { isOpen, onClose } = useDisclosure();
-
+  const state = useSelector((state) => {state})
+  
   return (
     <Box
       px={"2em"}
