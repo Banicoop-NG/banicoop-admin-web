@@ -19,42 +19,45 @@ const customerheader = [
 ];
 
 const CustomersPage = () => {
-
-  const [ searchValue , setSearchValue ]  = useState<string>("")
+  const [searchValue, setSearchValue] = useState<string>("");
   const getCells = async () => {
-    const request: AxiosResponse = await axiosInstance.get('/users');
-    return request?.data?.payload?.data
-  }
-  const { data  } = useQuery({
-    queryKey: ['customers'],
-    queryFn: getCells
-  })
-  
-  const filterItem = data?.filter(( value: string ) => {
-      if(value !== "" || value !== null ) {
-        return value
-      } else {
-        return  value === searchValue.trim().toLocaleLowerCase()
-      }
-  })
+    const request: AxiosResponse = await axiosInstance.get("/users");
+    return request?.data?.payload?.data;
+  };
+  const { data } = useQuery({
+    queryKey: ["customers"],
+    queryFn: getCells,
+  });
 
-  const handleSearch = () =>{}
+  const filterItem = data?.filter((value: string) => {
+    if (value !== "" || value !== null) {
+      return value;
+    } else {
+      return value === searchValue.trim().toLocaleLowerCase();
+    }
+  });
+
+  const handleSearch = () => {};
   return (
     <DashboardLayout>
       <BoardContainer title="Customer List">
-        <DefaultTable tableHeader={customerheader} >
-          {
-            filterItem?.map ((  _  , key: number  ) => {
-              return <Tr key={key}>
-                <Td>{key+1}</Td>
-                <Td>{_?.firstName} {_?.lastName}</Td>
+        <DefaultTable tableHeader={customerheader}>
+          {filterItem?.map((_, key: number) => {
+            return (
+              <Tr key={key}>
+                <Td>{key + 1}</Td>
+                <Td>
+                  {_?.firstName} {_?.lastName}
+                </Td>
                 <Td>{_?.email}</Td>
                 <Td>{_?.phoneNumber}</Td>
                 <Td>{moment(_?.createdAt).format("MMMM Do YY")}</Td>
-                <Td><MdMoreVert cursor='pointer' /></Td>
+                <Td>
+                  <MdMoreVert cursor="pointer" />
+                </Td>
               </Tr>
-            })
-          }
+            );
+          })}
         </DefaultTable>
       </BoardContainer>
     </DashboardLayout>

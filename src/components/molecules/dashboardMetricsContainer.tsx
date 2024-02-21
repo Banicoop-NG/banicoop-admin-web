@@ -11,13 +11,15 @@ interface IMetricIcon {
   icon?: ReactNode;
   title: string;
   amount: number;
-  currency?: boolean
+  currency?: boolean;
 }
 
-const MetricBox: FC<IMetricIcon> = ({ currency ,  icon, title, amount }: IMetricIcon) => {
-
-
-
+const MetricBox: FC<IMetricIcon> = ({
+  currency,
+  icon,
+  title,
+  amount,
+}: IMetricIcon) => {
   return (
     <Box
       display={"flex"}
@@ -56,8 +58,7 @@ const MetricBox: FC<IMetricIcon> = ({ currency ,  icon, title, amount }: IMetric
           }}
           fontWeight={"bold"}
         >
-          
-          {currency ? "₦" : ''} {formatNumber(amount)}
+          {currency ? "₦" : ""} {formatNumber(amount)}
         </Text>
       </Box>
     </Box>
@@ -84,29 +85,28 @@ const days = [
 ];
 
 const DashboardMetricsContainer = () => {
-  const {requestActions} = useSelector((state) => state)
-  const { allUsers  } = requestActions;
-  const usersLength = allUsers?.length; 
- 
+  const { requestActions } = useSelector(state => state);
+  const { allUsers } = requestActions;
+  const usersLength = allUsers?.length;
 
   const metricData = [
     {
       title: "Total Customers",
       icon: "",
       amount: usersLength,
-      currenncy: false 
+      currenncy: false,
     },
     {
       title: "Total Transactions",
       icon: "",
       amount: 0,
-      currenncy: false 
+      currenncy: false,
     },
     {
       title: "Total Loans",
       icon: "",
       amount: 0,
-      currenncy: false 
+      currenncy: false,
     },
   ];
   return (
@@ -142,7 +142,11 @@ const DashboardMetricsContainer = () => {
       >
         {metricData.map((_, key) => (
           <Fragment key={key}>
-            <MetricBox title={_.title} amount={_.amount} currency={_.currenncy} />
+            <MetricBox
+              title={_.title}
+              amount={_.amount}
+              currency={_.currenncy}
+            />
           </Fragment>
         ))}
       </Flex>

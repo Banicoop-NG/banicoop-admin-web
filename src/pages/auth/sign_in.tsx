@@ -12,7 +12,6 @@ import { AxiosError } from "axios";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 
-
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .required("Email is required")
@@ -26,8 +25,7 @@ const initialValues = {
 };
 
 const SignIn = () => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const loginMutation = useMutation<
     { email: string; pwd: string },
     AxiosError,
@@ -38,7 +36,7 @@ const SignIn = () => {
     },
     onSuccess: response => {
       const data = response?.data?.payload;
-      console.log(data)
+      console.log(data);
 
       const { accessToken, refreshToken } = data;
       Cookies.set("_accessToken", accessToken, { expires: 1 });

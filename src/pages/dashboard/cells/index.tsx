@@ -2,7 +2,7 @@
 import DashboardLayout from "../../../layout/dashboardLayout";
 import BoardContainer from "../../../layout/boardContainer";
 import DefaultTable from "../../../components/essentials/defaultTable";
-import { Flex, useDisclosure, Box, Tr , Td } from "@chakra-ui/react";
+import { Flex, useDisclosure, Box, Tr, Td } from "@chakra-ui/react";
 import {
   BoardActionButton,
   ExportButton,
@@ -16,7 +16,7 @@ import { useMutation } from "@tanstack/react-query";
 import { axiosInstance } from "../../../config/axios";
 import { postRequest } from "../../../utils/newRequest";
 import { useQuery } from "@tanstack/react-query";
-import { useState  } from "react";
+import { useState } from "react";
 import moment from "moment";
 
 const CellsTableheader = [
@@ -64,41 +64,41 @@ const CellsPage = () => {
     },
   });
 
-  const [ searchValue , setSearchValue ]  = useState<string>("")
+  const [searchValue, setSearchValue] = useState<string>("");
   const getCells = async () => {
-    const request: AxiosResponse = await axiosInstance.get('/contribution');
-    return request?.data?.payload
-  }
-  const { data  } = useQuery({
-    queryKey: ['customers'],
-    queryFn: getCells
-  })
-  
-  const filterItem = data?.filter (( value: string  ) => {
-      if(value !== "" || value !== null ) {
-        return value
-      } else {
-        return  value === searchValue.trim().toLocaleLowerCase()
-      }
-  })
+    const request: AxiosResponse = await axiosInstance.get("/contribution");
+    return request?.data?.payload;
+  };
+  const { data } = useQuery({
+    queryKey: ["customers"],
+    queryFn: getCells,
+  });
+
+  const filterItem = data?.filter((value: string) => {
+    if (value !== "" || value !== null) {
+      return value;
+    } else {
+      return value === searchValue.trim().toLocaleLowerCase();
+    }
+  });
 
   return (
     <>
       <DashboardLayout>
         <BoardContainer title="Contributions Details" section={actionButton}>
-        <DefaultTable tableHeader={CellsTableheader} >
-          {
-            filterItem?.map ((  _  , key: number  ) => {
-              return <Tr key={key}>
-                <Td>{key+1}</Td>
-                <Td>{_?.contributionName}</Td>
-                <Td>{_?.monthlyAmount}</Td>
-                <Td>{_?.monthlyOutput}</Td>
-                <Td>{moment(_?.startDate).format("MMMM Do YY")}</Td>
-              </Tr>
-            })
-          }
-        </DefaultTable>
+          <DefaultTable tableHeader={CellsTableheader}>
+            {filterItem?.map((_, key: number) => {
+              return (
+                <Tr key={key}>
+                  <Td>{key + 1}</Td>
+                  <Td>{_?.contributionName}</Td>
+                  <Td>{_?.monthlyAmount}</Td>
+                  <Td>{_?.monthlyOutput}</Td>
+                  <Td>{moment(_?.startDate).format("MMMM Do YY")}</Td>
+                </Tr>
+              );
+            })}
+          </DefaultTable>
         </BoardContainer>
         <ModalLayout
           isOpen={isOpen}
